@@ -19,3 +19,16 @@ services:
     networks:
       - default
       - ceres-dev
+  
+  pg_tileserv:
+    image: pramsey/pg_tileserv
+    container_name: pg_tileserv
+    env_file: pg_tileserv.env
+    volumes: 
+      - .:/etc/config
+    command: --config /etc/config/pg_tileserv.toml
+    ports:
+      - 8887:7800
+    networks:
+      - default
+      - ceres-dev
